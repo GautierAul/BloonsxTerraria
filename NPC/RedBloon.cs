@@ -50,6 +50,7 @@ namespace BloonsxTerraria.NPC
         {
 			Player player = Main.player[NPC.target];
 			NPC.velocity = NPC.DirectionTo(new Vector2(player.Center.X, player.Center.Y));
+			if
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

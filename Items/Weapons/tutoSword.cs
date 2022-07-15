@@ -4,7 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BloonsxTerraria.Items.Weapons
+namespace BloonsxTerrariad.Items.Weapons
 {
 	public class tutoSword : ModItem
 	{
@@ -29,7 +29,7 @@ namespace BloonsxTerraria.Items.Weapons
 			Item.rare = 2;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.shoot = ModContent.ProjectileType<Projectiles.Fireball>();
+			Item.shoot = ModContent.ProjectileType<Items.Projectiles.Fireball>();
 			Item.shootSpeed = 3f;
 			Item.alpha = 2;
 		}
