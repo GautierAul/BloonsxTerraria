@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "01QtrsMPy4sE4JPAQgyMduzyTfGHGORWHmWJZltGz3f0kjVrhotflJu3gCw4TyxVLSsdjdPcTL1QP/tTVMiY3A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gauti\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\BloonsxTerraria\\BloonsxTerraria.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gauti\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}
