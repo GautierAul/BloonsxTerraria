@@ -27,10 +27,10 @@ namespace BloonsxTerraria.Items.Projectiles
             Projectile.friendly = true;
             Projectile.tileCollide = true;
             Projectile.penetrate = 30;
-            //Projectile.timeLeft = 200;
+            Projectile.timeLeft = 300;
             Projectile.light = 0.75f;
             Projectile.extraUpdates = 1;
-            Projectile.ignoreWater = true;
+            Projectile.ignoreWater = false;
             //Projectile.spriteDirection = 50;
         }
 
@@ -41,12 +41,18 @@ namespace BloonsxTerraria.Items.Projectiles
 
             Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X);
 
+            float velX = 0.99f;
+            Projectile.velocity.X *= velX;
+
+            float velY = 0.99f;
+            Projectile.velocity.Y *= velY;
+
 
             Projectile.frameCounter++;
-            if(Projectile.frameCounter >= 30)
+            if(Projectile.frameCounter >= 1)
             {
                 Projectile.frame = 3;
-                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X + Main.rand.Next(-5, 5), Projectile.Center.Y + Main.rand.Next(-5, 5)), DustID.GemAmber, Vector2.Zero, Projectile.alpha, default(Color), 1f);
+                Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X + Main.rand.Next(-5, 5), Projectile.Center.Y + Main.rand.Next(-5, 5)), 6, Vector2.Zero, Projectile.alpha, default(Color), 1f);
                 dust.noGravity = true;
                 dust.fadeIn = 0.1f;
                 dust.scale = 1f;
