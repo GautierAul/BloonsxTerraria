@@ -13,13 +13,12 @@ using Terraria.DataStructures;
 namespace BloonsxTerraria.NPC
 {
 	//The ExampleZombieThief is essentially the same as a regular Zombie, but it steals ExampleItems and keep them until it is killed, being saved with the world if it has enough of them.
-	public class RedBloon : ModNPC
+	public class BlackBloon : ModNPC
 	{
-		private bool isSpawned = false;
 		public override string Texture => "BloonsxTerraria/NPC/Bloons";
 
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Red Bloon");
+			DisplayName.SetDefault("Black Bloon");
 
 			Main.npcFrameCount[Type] = 12;
 
@@ -49,11 +48,23 @@ namespace BloonsxTerraria.NPC
 			NPC.aiStyle = 14;
 		}
 
+		public override void AI()
+		{
 
+		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		public override bool PreKill()
         {
-			return SpawnCondition.OverworldDaySlime.Chance * 0.08f;
+			// Spawning two Pink Bloon on death, with the second having different velocity to set them apart
+			Terraria.NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<PinkBloon>());
+			int bloon2 = Terraria.NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<PinkBloon>());
+			Main.npc[bloon2].velocity = new Vector2(1, 1);
+			return true;
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+			return SpawnCondition.OverworldDaySlime.Chance * 0.03f;
         }
 
 		public override void FindFrame(int frameHeight)
@@ -64,7 +75,8 @@ namespace BloonsxTerraria.NPC
 			//    NPC.frameCounter = 0;
 			//}
 			//NPC.frame.Y = (int)NPC.frameCounter / 10 * frameHeight;
-		}
+			NPC.frame.Y = 200;
+        }
 
 
 		//public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) {
@@ -78,10 +90,7 @@ namespace BloonsxTerraria.NPC
 		//	});
 		//}
 
-		public override void OnKill()
-		{
-			Item.NewItem(NPC.GetSource_Death(), NPC.Center, ModContent.ItemType<Items.Drop.Rubber>(), Main.rand.Next(1, 5), true);
-		}
+
 
 
 	}

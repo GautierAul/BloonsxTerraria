@@ -13,13 +13,13 @@ using Terraria.DataStructures;
 namespace BloonsxTerraria.NPC
 {
 	//The ExampleZombieThief is essentially the same as a regular Zombie, but it steals ExampleItems and keep them until it is killed, being saved with the world if it has enough of them.
-	public class RedBloon : ModNPC
+	public class PinkBloon : ModNPC
 	{
 		private bool isSpawned = false;
 		public override string Texture => "BloonsxTerraria/NPC/Bloons";
 
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Red Bloon");
+			DisplayName.SetDefault("Pink Bloon");
 
 			Main.npcFrameCount[Type] = 12;
 
@@ -49,11 +49,20 @@ namespace BloonsxTerraria.NPC
 			NPC.aiStyle = 14;
 		}
 
+		public override void AI()
+		{
 
+		}
 
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		public override bool PreKill()
         {
-			return SpawnCondition.OverworldDaySlime.Chance * 0.08f;
+			Terraria.NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<YellowBloon>());
+			return true;
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+			return SpawnCondition.OverworldDaySlime.Chance * 0.04f;
         }
 
 		public override void FindFrame(int frameHeight)
@@ -64,7 +73,8 @@ namespace BloonsxTerraria.NPC
 			//    NPC.frameCounter = 0;
 			//}
 			//NPC.frame.Y = (int)NPC.frameCounter / 10 * frameHeight;
-		}
+			NPC.frame.Y = 160;
+        }
 
 
 		//public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry) {
@@ -78,10 +88,7 @@ namespace BloonsxTerraria.NPC
 		//	});
 		//}
 
-		public override void OnKill()
-		{
-			Item.NewItem(NPC.GetSource_Death(), NPC.Center, ModContent.ItemType<Items.Drop.Rubber>(), Main.rand.Next(1, 5), true);
-		}
+
 
 
 	}

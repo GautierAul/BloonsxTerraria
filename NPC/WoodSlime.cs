@@ -30,7 +30,7 @@ namespace BloonsxTerraria.NPC
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldDaySlime.Chance * 0.2f;
+            return SpawnCondition.OverworldDaySlime.Chance * 0.0001f;
         }
 
         public override void FindFrame(int frameHeight)

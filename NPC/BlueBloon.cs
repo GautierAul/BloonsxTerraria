@@ -15,12 +15,13 @@ namespace BloonsxTerraria.NPC
 	//The ExampleZombieThief is essentially the same as a regular Zombie, but it steals ExampleItems and keep them until it is killed, being saved with the world if it has enough of them.
 	public class BlueBloon : ModNPC
 	{
+		private bool isSpawned = false;
 		public override string Texture => "BloonsxTerraria/NPC/Bloons";
 
-        public override void SetStaticDefaults() {
+		public override void SetStaticDefaults() {
 			DisplayName.SetDefault("Blue Bloon");
 
-			Main.npcFrameCount[Type] = 5;
+			Main.npcFrameCount[Type] = 12;
 
             //NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0) {
             //	// Influences how the NPC looks in the Bestiary
@@ -45,39 +46,24 @@ namespace BloonsxTerraria.NPC
 			NPC.lifeMax = 50;
 			NPC.value = 60f;
 			NPC.noGravity = true;
-            //AnimationType = NPCID.Zombie;
 			NPC.aiStyle = 14;
-			
-
 		}
 
 		public override void AI()
-        {
+		{
 			
-
 
 		}
 
 		public override bool PreKill()
         {
-			
-				Console.WriteLine("dead");
-				Terraria.NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<RedBloon>());
-
-
+			Terraria.NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<RedBloon>());
 			return true;
-			
         }
-
-
-
-
-
-
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			return SpawnCondition.OverworldDaySlime.Chance * 0.25f;
+			return SpawnCondition.OverworldDaySlime.Chance * 0.07f;
         }
 
 		public override void FindFrame(int frameHeight)
