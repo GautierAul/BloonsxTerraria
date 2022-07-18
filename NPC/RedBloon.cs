@@ -15,7 +15,6 @@ namespace BloonsxTerraria.NPC
 	//The ExampleZombieThief is essentially the same as a regular Zombie, but it steals ExampleItems and keep them until it is killed, being saved with the world if it has enough of them.
 	public class RedBloon : ModNPC
 	{
-		private bool isSpawned = false;
 		public override string Texture => "BloonsxTerraria/NPC/Bloons";
 
 		public override void SetStaticDefaults() {
@@ -28,13 +27,6 @@ namespace BloonsxTerraria.NPC
             //	Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             //};
             //NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-			int random = Main.rand.Next(1, 2);
-			// Creating a SoundStyle from a sound file in this Mod, then playing it
-			SoundEngine.PlaySound(new SoundStyle("BloonsxTerraria/Sounds/pop" + random.ToString()));
         }
 
         public override void SetDefaults() {
@@ -53,8 +45,12 @@ namespace BloonsxTerraria.NPC
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			return SpawnCondition.OverworldDaySlime.Chance * 0.08f;
-        }
+			if (spawnInfo.Player.ZoneForest)
+			{
+				return SpawnCondition.OverworldDay.Chance * 0.04f;
+			}
+			return 0f;
+		}
 
 		public override void FindFrame(int frameHeight)
 		{

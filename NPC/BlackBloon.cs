@@ -29,12 +29,7 @@ namespace BloonsxTerraria.NPC
             //NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
         }
 
-        public override void HitEffect(int hitDirection, double damage)
-        {
-			int random = Main.rand.Next(1, 2);
-			// Creating a SoundStyle from a sound file in this Mod, then playing it
-			SoundEngine.PlaySound(new SoundStyle("BloonsxTerraria/Sounds/pop" + random.ToString()));
-        }
+       
 
         public override void SetDefaults() {
 			float NpcCenterX = NPC.Center.X;
@@ -64,8 +59,12 @@ namespace BloonsxTerraria.NPC
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-			return SpawnCondition.OverworldDaySlime.Chance * 0.03f;
-        }
+			if (spawnInfo.Player.ZoneBeach)
+			{
+				return SpawnCondition.OverworldDay.Chance * 0.05f;
+			}
+			return 0f;
+		}
 
 		public override void FindFrame(int frameHeight)
 		{
