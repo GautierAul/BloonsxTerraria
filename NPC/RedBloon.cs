@@ -33,9 +33,9 @@ namespace BloonsxTerraria.NPC
 			float NpcCenterX = NPC.Center.X;
             NPC.width = 20;
             NPC.height = 20;
-            NPC.damage = 5;
+            NPC.damage = 6;
 			NPC.defense = 0;
-			NPC.lifeMax = 50;
+			NPC.lifeMax = 14;
 			NPC.value = 60f;
 			NPC.noGravity = true;
 			NPC.aiStyle = 14;
@@ -76,7 +76,7 @@ namespace BloonsxTerraria.NPC
 
 		public override void OnKill()
 		{
-			Item.NewItem(NPC.GetSource_Death(), NPC.Center, ModContent.ItemType<Items.Drop.Rubber>(), Main.rand.Next(1, 5), true);
+			Item.NewItem(NPC.GetSource_Death(), NPC.Center, ModContent.ItemType<Items.Drop.Rubber>(), Main.rand.Next(1, 2), true);
 		}
 
 

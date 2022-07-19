@@ -33,10 +33,9 @@ namespace BloonsxTerraria.NPC
 			float NpcCenterX = NPC.Center.X;
             NPC.width = 20;
             NPC.height = 20;
-            NPC.damage = 5;
-			NPC.defense = 0;
-			NPC.lifeMax = 50;
-			NPC.value = 60f;
+            NPC.damage = 20;
+			NPC.defense = 14;
+			NPC.lifeMax = 100;
 			NPC.noGravity = true;
 			NPC.aiStyle = 14;
 		}

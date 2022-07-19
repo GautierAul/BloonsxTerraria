@@ -39,13 +39,15 @@ namespace BloonsxTerraria.Items.Weapons
 			// Weapon Properties
 			Item.DamageType = DamageClass.Ranged; // Sets the damage type to ranged.
 			Item.damage = 5; // Sets the item's damage. Note that projectiles shot by this weapon will use its and the used ammunition's damage added together.
-			Item.knockBack = 5f; // Sets the item's knockback. Note that projectiles shot by this weapon will use its and the used ammunition's knockback added together.
+			Item.knockBack = 0.5f; // Sets the item's knockback. Note that projectiles shot by this weapon will use its and the used ammunition's knockback added together.
 			Item.noMelee = true; // So the item's animation doesn't do damage.
+
 
 			// Gun Properties
 			Item.shoot = ProjectileID.PurificationPowder; // For some reason, all the guns in the vanilla source have this.
-			Item.shootSpeed = 22; // The speed of the projectile (measured in pixels per frame.)
-			Item.useAmmo = AmmoID.Bullet; // The "ammo Id" of the ammo item that this weapon uses. Ammo IDs are magic numbers that usually correspond to the item id of one item that most commonly represent the ammo type.
+			Item.shootSpeed = 18; // The speed of the projectile (measured in pixels per frame.)
+			Item.useAmmo = ModContent.ItemType<SimpleDartAmmo>();
+			//Item.useAmmo = AmmoID.Arrow; // The "ammo Id" of the ammo item that this weapon uses. Ammo IDs are magic numbers that usually correspond to the item id of one item that most commonly represent the ammo type.
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
@@ -86,7 +88,9 @@ namespace BloonsxTerraria.Items.Weapons
         // Even Arc style: Multiple Projectile, Even Spread
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
 			float numberProjectiles = 3;
-			float rotation = MathHelper.ToRadians(10);
+			float rotation = MathHelper.ToRadians(8);
+
+			player.AddBuff(ModContent.BuffType<Content.Buffs.Helicopter000>(), 60); 
 
 			position += Vector2.Normalize(velocity) * 30f;
 

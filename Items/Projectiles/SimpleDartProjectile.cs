@@ -37,7 +37,7 @@ namespace BloonsxTerraria.Items.Projectiles
 			AIType = ProjectileID.WoodenArrowFriendly; // Act exactly like default Bullet
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
+        public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			// If collide with tile, reduce the penetrate.
 			// So the projectile can reflect at most 5 times
@@ -49,7 +49,7 @@ namespace BloonsxTerraria.Items.Projectiles
 			else
 			{
 				Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-				SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
+				//SoundEngine.PlaySound(SoundID.Item16, Projectile.position);
 			}
 
 			return false;
@@ -76,7 +76,7 @@ namespace BloonsxTerraria.Items.Projectiles
 		{
 			// This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
 			Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-			SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
+			SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
 		}
 	}
 }

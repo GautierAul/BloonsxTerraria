@@ -28,7 +28,7 @@ namespace BloonsxTerraria.Items.Ammo
 			Item.rare = ItemRarityID.White;
 			Item.shoot = ModContent.ProjectileType<SimpleDartProjectile>(); // The projectile that weapons fire when using this item as ammunition.
 			Item.shootSpeed = 16f; // The speed of the projectile.
-			Item.ammo = AmmoID.Arrow; // The ammo class this ammo belongs to.
+			Item.ammo = ModContent.ItemType<SimpleDartAmmo>(); // The ammo class this ammo belongs to.
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.

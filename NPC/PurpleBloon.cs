@@ -36,7 +36,6 @@ namespace BloonsxTerraria.NPC
             NPC.damage = 5;
 			NPC.defense = 0;
 			NPC.lifeMax = 50;
-			NPC.value = 60f;
 			NPC.noGravity = true;
 			NPC.aiStyle = 14;
 		}

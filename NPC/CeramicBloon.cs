@@ -33,10 +33,9 @@ namespace BloonsxTerraria.NPC
 			float NpcCenterX = NPC.Center.X;
             NPC.width = 20;
             NPC.height = 20;
-            NPC.damage = 5;
+            NPC.damage = 32;
 			NPC.defense = 9999;
 			NPC.lifeMax = 4;
-			NPC.value = 60f;
 			NPC.noGravity = true;
 			NPC.aiStyle = 14;
 			NPC.DeathSound = new SoundStyle("BloonsxTerraria/Sounds/ceramic_death");
