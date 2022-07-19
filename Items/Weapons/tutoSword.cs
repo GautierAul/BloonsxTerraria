@@ -35,7 +35,7 @@ namespace BloonsxTerraria.Items.Weapons
 			Item.alpha = 2;
 		}
 
-        public override void AddRecipes()
+		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DirtBlock, 10);
@@ -43,14 +43,14 @@ namespace BloonsxTerraria.Items.Weapons
 			recipe.Register();
 		}
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
 			Vector2 muzzleOffset = Vector2.Normalize(velocity) * 64f;
 
-            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-                position += muzzleOffset;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+				position += muzzleOffset;
 
-            int dustQuantity = 5; // How many particles do you want ?
+			int dustQuantity = 5; // How many particles do you want ?
 			for (int i = 0; i < dustQuantity; i++)
 			{
 				Vector2 dustOffset = Vector2.Normalize(velocity) * 32f;
@@ -61,7 +61,7 @@ namespace BloonsxTerraria.Items.Weapons
 				Main.dust[dust].scale = 1.5f;    // Change the dust size.
 			}
 			return true;
-        }
+		}
 
-    }
+	}
 }
